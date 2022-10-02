@@ -6,6 +6,9 @@ const sendDeliveryPartner = require('./utils/sendDeliveryPartner')
 const dailyAlert = require('./utils/sendDailyAlert')
 const port = process.env.PORT || 5000
 
+
+console.log(`System Current Time & Date is ${new Date()}`)
+
 schedule.schedule('0 11 * * *', async function(){
   
     console.log('11')
