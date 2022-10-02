@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 sgMail.setApiKey(process.env.SENDGRID_KEY);
 
-const dailyAlert = async () => {
+const dailyAlert = async (SLOT) => {
   const msg = {
     to: 'team@phirlo.in', // Change to your recipient
     from: "sb78639@gmail.com", // Change to your verified sender
@@ -15,7 +15,7 @@ const dailyAlert = async () => {
     `,
     html: `
     <p>Hi</p>
-    <p>Phirlo You got this message from your schedular which is scheduled for 11 o clock morning</p>
+    <p>Phirlo You got this message from your schedular which is scheduled for ${SLOT}</p>
     
     `,
   };
