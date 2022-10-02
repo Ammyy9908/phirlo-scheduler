@@ -6,7 +6,7 @@ sgMail.setApiKey(process.env.SENDGRID_KEY);
 const dailyAlert = async () => {
   const msg = {
     to: 'team@phirlo.in', // Change to your recipient
-    from: "team@phirlo.in", // Change to your verified sender
+    from: "sb78639@gmail.com", // Change to your verified sender
     
     subject: "Phirlo Scheduler Alert",
     text: `
