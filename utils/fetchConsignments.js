@@ -1,7 +1,7 @@
 const axios  = require('axios');
 
 
-async function getConsignmentsDetails(){
+async function getConsignmentsDetails(token){
     try {
         const r = await axios.post(
           `https://api.phirlo.in/graphql`,
@@ -16,6 +16,7 @@ async function getConsignmentsDetails(){
                         name
                         consignmentId
                         id
+                        mobile
                         points
                         deliveryStatus
                         consignmentName
@@ -23,6 +24,7 @@ async function getConsignmentsDetails(){
                         dateOfPickup
                         dateOfPointsCredited
                         address
+                        scheduleDate
                         email
                         userWallet{
                           totalCoins
@@ -36,7 +38,7 @@ async function getConsignmentsDetails(){
           {
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNiNzg2MzlAZ21haWwuY29tIiwiZXhwIjoxNjY0NjA5MzAwLCJvcmlnSWF0IjoxNjY0NjA5MDAwfQ.w4FUQfmzp4AGR-a95JRjyeu8jHL4TL9nnYgdfkikhck`,
+              'Authorization': `jwt ${token}`,
             },
           },
         )
@@ -45,7 +47,6 @@ async function getConsignmentsDetails(){
         if (errors) {
           return false
         } else {
-          console.log(r.data.data)
           return r.data.data
         }
       } catch (e) {

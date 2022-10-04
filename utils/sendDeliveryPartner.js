@@ -1,5 +1,6 @@
 const axios = require('axios');
-
+const DateIST = require('./date');
+const moment = require('moment');
 const phirlo_address = {
     "name": "Rohan",
     "phone":"919041333444",
@@ -12,9 +13,15 @@ const phirlo_address = {
 
 
 async function sendDeliveryPartner(consignment){
-    console.log(consignment)
-    destination_start_time = new Date(new Date(consignment.slot["end"]).getTime()+2*60*60*1000)
-    destination_end_time = new Date(new Date(consignment.slot["end"]).getTime()+3*60*60*1000)
+   
+    destination_start_time = moment(consignment.scheduleDate).add(2,'hour').utcOffset("+05:30").format()
+    destination_end_time = moment(consignment.scheduleDate).add(3,'hour').utcOffset("+05:30").format()
+    
+   
+    const source_start = moment(consignment.scheduleDate).utcOffset("+05:30").format()
+    const source_end = moment(consignment.scheduleDate).utcOffset("+05:30").add(1,'hour').format()
+    
+
     try{
         const r = await axios.post(`https://robotapitest-in.borzodelivery.com/api/business/1.2/create-order`,{
 
@@ -24,14 +31,15 @@ async function sendDeliveryPartner(consignment){
             "points":[
     {"address":consignment["address"],
     "contact_person":{"phone":consignment["mobile"]},
-     "required_start_datetime":consignment.slot["start"],
-     "required_finish_datetime":consignment.slot["end"],
+     "required_start_datetime":moment(consignment.scheduleDate).utcOffset("+05:30").format(),
+     "required_finish_datetime":moment(consignment.scheduleDate).utcOffset("+06:30").format(),
     },
-    {"address":phirlo_address["address"],
+    {
+        "address":phirlo_address["address"],
     "contact_person":{"phone":phirlo_address["phone"]},
-     "required_start_datetime":destination_start_time,
-     "required_finish_datetime":destination_end_time,
-    }
+        "required_start_datetime":destination_start_time,
+        "required_finish_datetime":destination_end_time,
+    }   
     ]
         },
         {
@@ -41,6 +49,13 @@ async function sendDeliveryPartner(consignment){
         });
 
         console.log(r.data)
+        const {is_successful,order_id} = r.data;
+        if(is_successful){
+            return order_id;
+        }
+        else{
+            return false;
+        }
 
 
     }
