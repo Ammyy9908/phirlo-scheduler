@@ -23,7 +23,7 @@ async function sendDeliveryPartner(consignment){
     
 
     try{
-        const r = await axios.post(`https://robotapitest-in.borzodelivery.com/api/business/1.2/create-order`,{
+        const r = await axios.post(`https://robot-in.borzodelivery.com/api/business/1.2/create-order`,{
 
             "matter": "Clothes",
             "total_weight_kg":1,
@@ -44,7 +44,7 @@ async function sendDeliveryPartner(consignment){
         },
         {
             headers:{
-                "X-DV-Auth-Token":"8352C1E976EC2A14ABB75D157F457BCE14E94749"
+                "X-DV-Auth-Token":"B7F446872C414F06397D782E6B56E6407BCF81F9"
             }
         });
 

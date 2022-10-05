@@ -5,8 +5,8 @@ async function updateConsignment(token,id,status,points,order_id){
         const r = await axios.post(
           'https://api.phirlo.in/graphql',
           {
-            query: `mutation updateConsignmentStatus($consignmentId:String!,$status:String!,$ ) {
-                updateConsignmentStatus(consignmentId:$consignmentId,status:$status,points:$points){
+            query: `mutation updateConsignmentStatus($consignmentId:String!,$status:String! ) {
+                updateConsignmentStatus(consignmentId:$consignmentId,status:$status){
                     
                     success
     
