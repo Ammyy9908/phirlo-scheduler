@@ -3,7 +3,7 @@ const schedule = require('node-cron')
 const app = express()
 const getAdminToken = require('./utils/getToken')
 const sendDeliveryPartner = require('./utils/sendDeliveryPartner')
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 3000
 const getConsignmentsDetails = require('./utils/fetchConsignments')
 const moment = require('moment')
 const updateConsignmentStatus = require('./utils/changeConsignmentStatus')
@@ -24,9 +24,8 @@ schedule.schedule('5 9 * * *', async function(){
     if(token.tokenAuth.token){
         
         const consignments_data = await getConsignmentsDetails(token.tokenAuth.token);
-        console.log('Cosignments',consignments_data.allConsignments.allConsignmentsDetails)
     if(consignments_data){
-        console.log("Inside Consignments Data")
+        
         const today = new Date()
         
         const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
@@ -40,7 +39,7 @@ schedule.schedule('5 9 * * *', async function(){
         
         
         });
-        console.log('Todays Consignments',todays_consignment)
+        
 
         todays_consignment.forEach(async (consignment)=>{
             const order_id = await sendDeliveryPartner(consignment);
@@ -66,7 +65,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           const consignments_data = await getConsignmentsDetails(token.tokenAuth.token);
       if(consignments_data){
-          console.log("Inside Consignments Data")
+          
           const today = new Date()
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
@@ -80,7 +79,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           
           });
-          console.log('Todays Consignments',todays_consignment)
+          
   
           todays_consignment.forEach(async (consignment)=>{
             const order_id = await sendDeliveryPartner(consignment);
@@ -108,7 +107,7 @@ schedule.schedule('5 10 * * *', async function(){
           const consignments_data = await getConsignmentsDetails(token.tokenAuth.token);
           console.log('Cosignments',consignments_data.allConsignments.allConsignmentsDetails)
       if(consignments_data){
-          console.log("Inside Consignments Data")
+          
           const today = new Date()
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
@@ -122,7 +121,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           
           });
-          console.log('Todays Consignments',todays_consignment)
+          
   
           todays_consignment.forEach(async (consignment)=>{
             const order_id = await sendDeliveryPartner(consignment);
@@ -149,7 +148,7 @@ schedule.schedule('5 10 * * *', async function(){
           const consignments_data = await getConsignmentsDetails(token.tokenAuth.token);
           console.log('Cosignments',consignments_data.allConsignments.allConsignmentsDetails)
       if(consignments_data){
-          console.log("Inside Consignments Data")
+          
           const today = new Date()
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
@@ -163,7 +162,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           
           });
-          console.log('Todays Consignments',todays_consignment)
+          
   
           todays_consignment.forEach(async (consignment)=>{
             const order_id = await sendDeliveryPartner(consignment);
@@ -192,7 +191,7 @@ schedule.schedule('5 10 * * *', async function(){
           const consignments_data = await getConsignmentsDetails(token.tokenAuth.token);
           console.log('Cosignments',consignments_data.allConsignments.allConsignmentsDetails)
       if(consignments_data){
-          console.log("Inside Consignments Data")
+          
           const today = new Date()
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
@@ -206,7 +205,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           
           });
-          console.log('Todays Consignments',todays_consignment)
+          
   
           todays_consignment.forEach(async (consignment)=>{
             const order_id = await sendDeliveryPartner(consignment);
@@ -234,7 +233,7 @@ schedule.schedule('5 10 * * *', async function(){
           const consignments_data = await getConsignmentsDetails(token.tokenAuth.token);
           console.log('Cosignments',consignments_data.allConsignments.allConsignmentsDetails)
       if(consignments_data){
-          console.log("Inside Consignments Data")
+          
           const today = new Date()
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
@@ -248,7 +247,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           
           });
-          console.log('Todays Consignments',todays_consignment)
+          
   
           todays_consignment.forEach(async (consignment)=>{
             const order_id = await sendDeliveryPartner(consignment);
@@ -276,7 +275,7 @@ schedule.schedule('5 10 * * *', async function(){
           const consignments_data = await getConsignmentsDetails(token.tokenAuth.token);
           console.log('Cosignments',consignments_data.allConsignments.allConsignmentsDetails)
       if(consignments_data){
-          console.log("Inside Consignments Data")
+          
           const today = new Date()
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
@@ -287,7 +286,7 @@ schedule.schedule('5 10 * * *', async function(){
               new Date(isTodayDate).getMonth()==today.getMonth()
               && new Date(isTodayDate).getFullYear()==today.getFullYear())
           });
-          console.log('Todays Consignments',todays_consignment)
+          
   
           todays_consignment.forEach(async (consignment)=>{
             const order_id = await sendDeliveryPartner(consignment);
@@ -315,7 +314,7 @@ schedule.schedule('5 10 * * *', async function(){
           const consignments_data = await getConsignmentsDetails(token.tokenAuth.token);
           console.log('Cosignments',consignments_data.allConsignments.allConsignmentsDetails)
       if(consignments_data){
-          console.log("Inside Consignments Data")
+          
           const today = new Date()
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
@@ -329,7 +328,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           
           });
-          console.log('Todays Consignments',todays_consignment)
+          
   
           todays_consignment.forEach(async (consignment)=>{
             const order_id = await sendDeliveryPartner(consignment);
@@ -356,7 +355,7 @@ schedule.schedule('5 10 * * *', async function(){
           const consignments_data = await getConsignmentsDetails(token.tokenAuth.token);
           console.log('Cosignments',consignments_data.allConsignments.allConsignmentsDetails)
       if(consignments_data){
-          console.log("Inside Consignments Data")
+          
           const today = new Date()
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
@@ -370,7 +369,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           
           });
-          console.log('Todays Consignments',todays_consignment)
+          
   
           todays_consignment.forEach(async (consignment)=>{
             const order_id = await sendDeliveryPartner(consignment);
@@ -398,7 +397,7 @@ schedule.schedule('5 10 * * *', async function(){
           const consignments_data = await getConsignmentsDetails(token.tokenAuth.token);
           console.log('Cosignments',consignments_data.allConsignments.allConsignmentsDetails)
       if(consignments_data){
-          console.log("Inside Consignments Data")
+          
           const today = new Date()
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
@@ -412,7 +411,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           
           });
-          console.log('Todays Consignments',todays_consignment)
+          
   
           todays_consignment.forEach(async (consignment)=>{
             const order_id = await sendDeliveryPartner(consignment);
@@ -440,7 +439,7 @@ schedule.schedule('5 10 * * *', async function(){
           const consignments_data = await getConsignmentsDetails(token.tokenAuth.token);
           console.log('Cosignments',consignments_data.allConsignments.allConsignmentsDetails)
       if(consignments_data){
-          console.log("Inside Consignments Data")
+          
           const today = new Date()
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
@@ -454,7 +453,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           
           });
-          console.log('Todays Consignments',todays_consignment)
+          
   
           todays_consignment.forEach(async (consignment)=>{
             const order_id = await sendDeliveryPartner(consignment);
