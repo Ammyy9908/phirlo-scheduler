@@ -472,5 +472,9 @@ schedule.schedule('5 10 * * *', async function(){
   })
 
 
+  app.get("/",(req,res)=>{
+    console.log("Schedular is running")
+  })
+
 
 app.listen(port, () => console.log(`Server running on port ${port}`))
