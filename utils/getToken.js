@@ -4,11 +4,6 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 async function getAdminToken(){
-
-  console.log("Getting Admin Token");
-    console.log(process.env.ADMIN_USERNAME);
-    console.log(process.env.ADMIN_PASSWORD);
-  
     try {
         const r = await axios.post(
           'https://api.phirlo.in/graphql',
@@ -39,7 +34,6 @@ async function getAdminToken(){
         if (errors) {
           return false
         } else {
-          console.log(r.data.data)
           return r.data.data
         }
       } catch (e) {

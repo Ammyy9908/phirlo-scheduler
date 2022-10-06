@@ -1,6 +1,8 @@
 const axios = require('axios');
-const DateIST = require('./date');
+const dotenv = require("dotenv")
 const moment = require('moment');
+
+dotenv.config();
 const phirlo_address = {
     "name": "Rohan",
     "phone":"919041333444",
@@ -23,7 +25,7 @@ async function sendDeliveryPartner(consignment){
     
 
     try{
-        const r = await axios.post(`https://robot-in.borzodelivery.com/api/business/1.2/create-order`,{
+        const r = await axios.post(`${process.env.BORZO_DEV_BASEURL}/create-order`,{
 
             "matter": "Clothes",
             "total_weight_kg":1,
@@ -31,8 +33,8 @@ async function sendDeliveryPartner(consignment){
             "points":[
     {"address":consignment["address"],
     "contact_person":{"phone":consignment["mobile"]},
-     "required_start_datetime":moment(consignment.scheduleDate).utcOffset("+05:30").format(),
-     "required_finish_datetime":moment(consignment.scheduleDate).utcOffset("+06:30").format(),
+     "required_start_datetime":source_start,
+     "required_finish_datetime":source_end,
     },
     {
         "address":phirlo_address["address"],
@@ -44,12 +46,13 @@ async function sendDeliveryPartner(consignment){
         },
         {
             headers:{
-                "X-DV-Auth-Token":"B7F446872C414F06397D782E6B56E6407BCF81F9"
+                "X-DV-Auth-Token":process.env.BORZO_DEVELOPMENT_KEY
             }
         });
 
         console.log(r.data)
-        const {is_successful,order_id} = r.data;
+        const {is_successful} = r.data;
+        const {order_id} = r.data.order;
         if(is_successful){
             return order_id;
         }

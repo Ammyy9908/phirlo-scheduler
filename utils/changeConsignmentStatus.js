@@ -1,12 +1,12 @@
 const axios  =  require("axios");
 
-async function updateConsignment(token,id,status,points,order_id){
+async function updateConsignment(token,id,status,order_id){
     try {
         const r = await axios.post(
           'https://api.phirlo.in/graphql',
           {
-            query: `mutation updateConsignmentStatus($consignmentId:String!,$status:String! ) {
-                updateConsignmentStatus(consignmentId:$consignmentId,status:$status){
+            query: `mutation updateConsignmentStatus($consignmentId:String!,$status:String!,$order_id:String! ) {
+                updateConsignmentStatus(consignmentId:$consignmentId,status:$status,deliveryOrderId:$order_id){
                     
                     success
     
@@ -18,8 +18,7 @@ async function updateConsignment(token,id,status,points,order_id){
                 
                 consignmentId:id,
                 status:status,
-                points:points,
-                order_id:order_id
+                order_id:order_id+""
             }
           },
 
@@ -30,7 +29,6 @@ async function updateConsignment(token,id,status,points,order_id){
             },
           },
         )
-        console.log('Potential User Response=>', r.data.data)
         const errors = r.data.errors
         if (errors) {
           return false
