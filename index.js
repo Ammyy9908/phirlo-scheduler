@@ -30,7 +30,7 @@ schedule.schedule('5 9 * * *', async function(){
         
         const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
             let isTodayDate = formatDate(c.scheduleDate)
-            return (c.scheduleDate && 
+            return (c.scheduleDate &&  c.deliveryStatus==="PICKUP_REQUESTED" && 
             new Date(isTodayDate).getHours()==today.getHours()+1 &&
             new Date(isTodayDate).getDate()==today.getDate() &&
             new Date(isTodayDate).getMonth()==today.getMonth()
@@ -65,18 +65,17 @@ schedule.schedule('5 10 * * *', async function(){
           
           const consignments_data = await getConsignmentsDetails(token.tokenAuth.token);
       if(consignments_data){
-          
+          console.log(consignments_data.allConsignments.allConsignmentsDetails)
           const today = new Date()
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
               let isTodayDate = formatDate(c.scheduleDate)
-              return (c.scheduleDate && 
+              return (c.scheduleDate && c.deliveryStatus==="PICKUP_REQUESTED" && 
               new Date(isTodayDate).getHours()==today.getHours()+1 &&
               new Date(isTodayDate).getDate()==today.getDate() &&
               new Date(isTodayDate).getMonth()==today.getMonth()
               && new Date(isTodayDate).getFullYear()==today.getFullYear())
-  
-          
+
           
           });
           
@@ -112,7 +111,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
               let isTodayDate = formatDate(c.scheduleDate)
-              return (c.scheduleDate && 
+              return (c.scheduleDate &&  c.deliveryStatus==="PICKUP_REQUESTED" && 
               new Date(isTodayDate).getHours()==today.getHours()+1 &&
               new Date(isTodayDate).getDate()==today.getDate() &&
               new Date(isTodayDate).getMonth()==today.getMonth()
@@ -153,7 +152,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
               let isTodayDate = formatDate(c.scheduleDate)
-              return (c.scheduleDate && 
+              return (c.scheduleDate &&  c.deliveryStatus==="PICKUP_REQUESTED" && 
               new Date(isTodayDate).getHours()==today.getHours()+1 &&
               new Date(isTodayDate).getDate()==today.getDate() &&
               new Date(isTodayDate).getMonth()==today.getMonth()
@@ -196,7 +195,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
               let isTodayDate = formatDate(c.scheduleDate)
-              return (c.scheduleDate && 
+              return (c.scheduleDate &&  c.deliveryStatus==="PICKUP_REQUESTED" && 
               new Date(isTodayDate).getHours()==today.getHours()+1 &&
               new Date(isTodayDate).getDate()==today.getDate() &&
               new Date(isTodayDate).getMonth()==today.getMonth()
@@ -238,7 +237,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
               let isTodayDate = formatDate(c.scheduleDate)
-              return (c.scheduleDate && 
+              return (c.scheduleDate &&  c.deliveryStatus==="PICKUP_REQUESTED" && 
               new Date(isTodayDate).getHours()==today.getHours()+1 &&
               new Date(isTodayDate).getDate()==today.getDate() &&
               new Date(isTodayDate).getMonth()==today.getMonth()
@@ -280,7 +279,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
               let isTodayDate = formatDate(c.scheduleDate)
-              return (c.scheduleDate && 
+              return (c.scheduleDate &&  c.deliveryStatus==="PICKUP_REQUESTED" && 
               new Date(isTodayDate).getHours()==today.getHours()+1 &&
               new Date(isTodayDate).getDate()==today.getDate() &&
               new Date(isTodayDate).getMonth()==today.getMonth()
@@ -319,7 +318,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
               let isTodayDate = formatDate(c.scheduleDate)
-              return (c.scheduleDate && 
+              return (c.scheduleDate &&  c.deliveryStatus==="PICKUP_REQUESTED" && 
               new Date(isTodayDate).getHours()==today.getHours()+1 &&
               new Date(isTodayDate).getDate()==today.getDate() &&
               new Date(isTodayDate).getMonth()==today.getMonth()
@@ -360,7 +359,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
               let isTodayDate = formatDate(c.scheduleDate)
-              return (c.scheduleDate && 
+              return (c.scheduleDate &&  c.deliveryStatus==="PICKUP_REQUESTED" && 
               new Date(isTodayDate).getHours()==today.getHours()+1 &&
               new Date(isTodayDate).getDate()==today.getDate() &&
               new Date(isTodayDate).getMonth()==today.getMonth()
@@ -402,7 +401,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
               let isTodayDate = formatDate(c.scheduleDate)
-              return (c.scheduleDate && 
+              return (c.scheduleDate &&  c.deliveryStatus==="PICKUP_REQUESTED" && 
               new Date(isTodayDate).getHours()==today.getHours()+1 &&
               new Date(isTodayDate).getDate()==today.getDate() &&
               new Date(isTodayDate).getMonth()==today.getMonth()
@@ -444,7 +443,7 @@ schedule.schedule('5 10 * * *', async function(){
           
           const todays_consignment = consignments_data.allConsignments.allConsignmentsDetails.filter((c)=>{
               let isTodayDate = formatDate(c.scheduleDate)
-              return (c.scheduleDate && 
+              return (c.scheduleDate &&  c.deliveryStatus==="PICKUP_REQUESTED" && 
               new Date(isTodayDate).getHours()==today.getHours()+1 &&
               new Date(isTodayDate).getDate()==today.getDate() &&
               new Date(isTodayDate).getMonth()==today.getMonth()
